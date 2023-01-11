@@ -1,0 +1,112 @@
+.movies__form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1140px;
+    width: 100%;
+    padding-top: 80px;
+    padding-bottom: 51px;
+    gap: 28px 0;
+    margin: 0 auto;
+    border-bottom: 1px solid #424242;
+    ;
+}
+
+.movies__search-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 1140px;
+    width: 100%;
+    gap: 14px;
+}
+
+.movies__search {
+    display: flex;
+    gap: 10px;
+}
+
+.movies__search-input {
+    font-size: 14px;
+    line-height: 18px;
+    color: white;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    background-color: #2F2F2F;
+    border-radius: 8px;
+    border: none;
+    margin: 0;
+    padding: 15px 0 15px 15px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.movies__search-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.movies__input-error {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    color: red;
+}
+
+/* Checkbox */
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.movies__checkbox {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.movies__checkbox-label {
+    position: relative;
+    display: block;
+    width: 36px;
+    height: 20px;
+    border-radius: 16px;
+    background-color: #343434;
+    cursor: pointer;
+}
+
+.movies__checkbox-label::after {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    background-color: #A0A0A0;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.movies__checkbox:checked+.movies__checkbox-label::after {
+    background-color: #2BE080;
+    left: 20px;
+}
+
+.movies__checkbox-text {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    cursor: pointer;
+}

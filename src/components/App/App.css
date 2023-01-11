@@ -1,0 +1,21 @@
+@import url(../../vendor/normalize.css);
+@import url(../../vendor/fonts/fonts.css);
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  min-width: 320px;
+  background-color: #202020;
+  margin: 0;
+}
+
+.content {
+  max-width: 1280px;
+  min-width: 320px;
+  width: 100%;
+  color: white;
+  font-family: 'Inter', 'Arial', sans-serif;
+}

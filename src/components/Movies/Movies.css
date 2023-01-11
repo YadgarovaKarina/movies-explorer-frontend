@@ -1,0 +1,15 @@
+.movies__preloader-container {
+  display: none;
+}
+
+@media screen and (max-width: 1196px) {
+  .movies {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movies {
+    padding: 0 10px;
+  }
+}

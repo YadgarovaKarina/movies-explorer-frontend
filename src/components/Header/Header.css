@@ -1,0 +1,49 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 21px 70px;
+}
+
+.header__account-logo {
+    background-color: #313131;
+    border-radius: 4px;
+    padding: 8px;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.header__link {
+    margin-right: 44px;
+}
+
+.header__logo:hover {
+    opacity: 0.5;
+    transition: 1s;
+}
+
+.header__navigate-btn {
+    background-image: url(../../images/Navigate-btn.svg);
+    width: 44px;
+    height: 44px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+@media screen and (max-width: 876px) {
+    .header {
+        padding: 18px 30px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .header__navigate-btn {
+        display: block;
+    }
+}
