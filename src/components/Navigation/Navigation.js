@@ -1,12 +1,15 @@
 import './Navigation.css';
 import accountIcon from '../../images/account-icon.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 function Navigation({ loggedIn }) {
+    const { pathname } = useLocation();
+    const isLoginPage = pathname === '/signin' || pathname === '/signup';
+
     return (
         <article className='navigation'>
-            {loggedIn &&
+            {loggedIn && 
                 <div className='navigation__autorize'>
                     <div className='navigation__films'>
                         <Link to='/movies' className='navigation__films-btn'>Фильмы</Link>
@@ -18,7 +21,7 @@ function Navigation({ loggedIn }) {
                     </div>
                 </div>
             }
-            {!loggedIn &&
+            {(!isLoginPage || (!loggedIn && !isLoginPage)) &&
                 <div className='navigation__links'>
                     <Link to='/signup' className='navigation__register-btn'>Регистрация</Link>
                     <Link to='/signin' className='navigation__login-btn'>Войти</Link>

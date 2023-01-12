@@ -15,7 +15,7 @@ import NotFound from '../Not Found/NotFound';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
-  const [loggedIn] = React.useState(true); // true or false
+  const [loggedIn] = React.useState(false); // true or false
   const [isNavtabOpen, setIsNavtabOpen] = React.useState(false);
 
   return (

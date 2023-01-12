@@ -6,7 +6,7 @@ function SearchForm() {
         <article className='movies__form-container'>
             <form className='movies__search-form'>
                 <div className='movies__search'>
-                    <input type='text' className='movies__search-input' placeholder='Фильм'></input>
+                    <input type='text' className='movies__search-input' placeholder='Фильм' required></input>
                     <button className='movies__search-btn'><img className='movies__search-image' src={Search} alt='Кнопка поиска' /></button>
                 </div>
                 <span className="movies__input-error"></span>

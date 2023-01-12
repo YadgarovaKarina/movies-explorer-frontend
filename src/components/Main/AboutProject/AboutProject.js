@@ -16,11 +16,11 @@ function AboutProject() {
                 </div>
             </section>
             <section className='about-project__progress'>
-                <div className='about-project__two-columns_green'>
+                <div className='about-project__progress-green'>
                     <div className='about-project__progress-line about-project__progress-line_firts'>1 неделя</div>
                     <p className='about-project__progress-text'>Back-end</p>
                 </div>
-                <div className='about-project__two-columns_grey'>
+                <div className='about-project__progress-grey'>
                     <div className='about-project__progress-line about-project__progress-line_second'>4 недели</div>
                     <p className='about-project__progress-text'>Front-end</p>
                 </div>

@@ -1,4 +1,4 @@
-.navTab__popup {
+.navTab {
     display: flex;
     flex-direction: column;
     max-width: 520px;
@@ -14,7 +14,7 @@
     transition: .6s linear;
   }
 
-  .navTab__popup_opened {
+  .navTab_opened {
     visibility: visible;
     opacity: 1;
   }

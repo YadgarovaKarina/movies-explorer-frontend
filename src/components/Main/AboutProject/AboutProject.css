@@ -49,11 +49,11 @@
     padding-bottom: 110px;
 }
 
-.about-project__two-columns_green {
+.about-project__progress-green {
     width: 20%;
 }
 
-.about-project__two-columns_grey {
+.about-project__progress-grey {
     width: 80%;
 }
 
@@ -118,11 +118,11 @@
         line-height: 16px;
     }
 
-    .about-project__two-columns_green {
+    .about-project__progress-green {
         width: 30%;
     }
 
-    .about-project__two-columns_grey {
+    .about-project__progress-grey {
         width: 70%;
     }
 }

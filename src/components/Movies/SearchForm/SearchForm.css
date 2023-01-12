@@ -50,6 +50,11 @@
     margin: 0;
 }
 
+.movies__search-btn:hover {
+    opacity: 0.8;
+    transition: 1s;
+ }
+
 .movies__input-error {
     font-size: 10px;
     font-weight: 400;
