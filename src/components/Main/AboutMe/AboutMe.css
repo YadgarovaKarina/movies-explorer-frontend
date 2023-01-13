@@ -1,0 +1,122 @@
+.about-me {
+    padding-bottom: 101px;
+}
+
+.about-me__content {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-me__description {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0px;
+    margin: 0;
+    padding-bottom: 26px;
+}
+
+.about-me__text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0px;
+    max-width: 600px;
+    padding-bottom: 99px;
+    margin: 0;
+}
+
+.about-me__subtitle {
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    margin: 0;
+    padding-top: 66px;
+    padding-bottom: 18px;
+}
+
+.about-me__photo {
+    padding-top: 66px;
+    width: 270px;
+    height: 327px;
+}
+
+.about-me__github {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.about-me__github:hover {
+    opacity: 0.5;
+    transition: 1s;
+}
+
+@media screen and (max-width: 1060px) {
+    .about-me__text {
+        padding-right: 46px;
+    }
+
+}
+
+@media screen and (max-width: 836px) {
+    .about-me__subtitle {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .about-me__description {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .about-me__text {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .about-me__photo {
+        width: 255px;
+        height: 307px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about-me__content {
+        flex-direction: column-reverse;
+    }
+
+    .about-me__photo {
+        width: 292px;
+        height: 352px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .about-me__subtitle {
+        font-size: 30px;
+        line-height: 37px;
+    }
+
+    .about-me__description {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .about-me__text {
+        font-size: 11px;
+        line-height: 16px;
+        padding-bottom: 40px;
+    }
+
+    .about-me__content {
+        align-items: center;
+    }
+
+}

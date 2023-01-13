@@ -1,0 +1,135 @@
+.navigation {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+.navigation__autorize {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.navigation__links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.navigation__register-btn {
+    border: none;
+    color: white;
+    background-color: transparent;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.navigation__login-btn {
+    background-color: #3DDC84;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    margin: 0;
+    padding: 8px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.navigation__films-btn {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0em;
+    border: none;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+.navigation__save-films-btn {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    border: none;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+.navigation__account-btn {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    border: none;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+.navigation__navigate-account {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation__films {
+    display: flex;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation__save-films-btn:hover {
+    opacity: 0.8;
+    transition: 1s;
+}
+
+.navigation__register-btn:hover {
+    opacity: 0.8;
+    transition: 1s;
+}
+
+.navigation__films-btn:hover {
+    opacity: 0.8;
+    transition: 1s;
+}
+
+.navigation__login-btn:hover {
+    opacity: 0.8;
+    transition: 1s;
+}
+
+.navigation__account-btn:hover {
+    opacity: 0.8;
+    transition: 1s;
+}
+
+
+@media screen and (max-width: 769px) {
+    .navigation__autorize {
+        display: none;
+    }
+}
