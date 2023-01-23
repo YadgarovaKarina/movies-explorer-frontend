@@ -5,14 +5,17 @@ export class MoviesApi {
     }
 
     _handleStatus(res) {
-        if (res.ok) {
-            return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return res.json()
+            .then((response) => {
+                if (res.ok) {
+                    return (response)
+                }
+                return Promise.reject(new Error(response.message));
+            })
     }
 
-    getFilms() {
-        return fetch(`${this._url}/movies`, {
+    getMoviesCard() {
+        return fetch(`${this._url}`, {
             headers: this._headers
         }).then(this._handleStatus);
     }

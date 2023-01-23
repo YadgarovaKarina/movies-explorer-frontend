@@ -5,10 +5,13 @@ export class MainApi {
   }
 
   _handleStatus(res) {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res}`);
+    return res.json()
+      .then((response) => {
+        if (res.ok) {
+          return (response)
+        }
+        return Promise.reject(new Error(response.message));
+      })
   }
 
   register(name, email, password) {

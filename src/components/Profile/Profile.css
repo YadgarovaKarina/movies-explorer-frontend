@@ -8,6 +8,10 @@
     padding: 74px 0 123px;
 }
 
+.main-register__container {
+    align-items: center;
+}
+
 .main-register__input {
     font-size: 13px;
     font-weight: 400;
@@ -60,7 +64,10 @@
 }
 
 .my-account__form {
+    display: flex;
+    flex-direction: column;
     width: 410px;
+    gap: 210px;
 }
 
 .my-account__title {
@@ -76,6 +83,11 @@
     background-color: transparent;
     color: white;
     cursor: pointer;
+}
+
+.my-account__edit-btn:disabled {
+    cursor: default;
+    color: gray;
 }
 
 .my-account__exit-btn {

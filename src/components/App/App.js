@@ -31,7 +31,7 @@ function App() {
         setLoggedIn(true);
         history.push('/movies');
       })
-      .catch((err) => { console.log(err) });
+      .catch((err) => err.message);
   };
 
   const handleLogout = () => {
@@ -71,20 +71,31 @@ function App() {
 
   const handleRegister = (name, email, password) => {
     return ApiMain.register(name, email, password)
-      .then(() => {
-        history.push('/movies');
+      .then(() => ApiMain.authorize(email, password))
+      .then((data) => {
+        if (!data.token) throw new Error('Missing jwt');
+        localStorage.setItem('jwt', data.token);
+        ApiMain.setToken(data.token);
       })
-      .catch((err) => { console.log(err) });
+      .then(() => ApiMain.getUserInfo())
+      .then((user) => {
+        if (user) {
+          setLoggedIn(true);
+          setCurrentUser(user);
+          history.push('/movies');
+        } else {
+          handleLogout();
+        }
+      })
+      .catch((err) => err.message);
   };
 
   function handleUpdateUser({ name, email }) {
-    ApiMain.editUserInfo(name, email)
+    return ApiMain.editUserInfo(name, email)
       .then((onUpdateUser) => {
         setCurrentUser(onUpdateUser);
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      .catch((err) => err.message);
   }
 
   return (
