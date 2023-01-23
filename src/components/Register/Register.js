@@ -2,22 +2,42 @@ import React from 'react';
 import './Register.css';
 import { Link } from 'react-router-dom';
 
-function Register() {
+function Register({ onRegister }) {
+    const [state, setState] = React.useState({
+        name: '',
+        email: '',
+        password: '',
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setState({
+            ...state,
+            [name]: value,
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const { name, email, password } = state;
+        onRegister(name, email, password)
+    }
+
     return (
         <main className='main main-register'>
-            <form className="main-register__form" name="register">
+            <form className="main-register__form" name="register" onSubmit={handleSubmit}>
                 <div className='main-register__container'>
                     <h6 className="main-register__title">Добро пожаловать!</h6>
                     <label className='main-register__label'>Имя<input type="name" className="main-register__input"
-                        name="name" placeholder="Имя" required />
+                        name="name" value={state.name} onChange={handleChange} placeholder="Имя" required />
                         <span className="main-register__input-error"></span>
                     </label>
                     <label className='main-register__label'>E-mail<input type="email" className="main-register__input"
-                        name="email" placeholder="Email" required />
+                        name="email" value={state.email} onChange={handleChange} placeholder="Email" required />
                         <span className="main-register__input-error"></span>
                     </label>
                     <label className='main-register__label'>Пароль<input type="password" className="main-register__input"
-                        name="password" placeholder="Пароль" required />
+                        name="password" value={state.password} onChange={handleChange} placeholder="Пароль" required />
                         <span className="main-register__input-error"></span>
                     </label>
                 </div>
