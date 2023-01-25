@@ -24,6 +24,7 @@ function SearchForm({ filterCards, required = true, page, updateSearch }) {
         if (!searchMovies && page === 'saved-movies') {
             filterCards(value);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [updateSearch]);
 
     const handleChange = (e) => {
