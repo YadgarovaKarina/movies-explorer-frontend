@@ -50,6 +50,10 @@
     margin: 0;
 }
 
+/* .movies__search-btn:disabled {
+
+} */
+
 .movies__search-btn:hover {
     opacity: 0.8;
     transition: 1s;

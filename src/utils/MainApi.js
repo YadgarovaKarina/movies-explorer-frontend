@@ -51,6 +51,27 @@ export class MainApi {
     }).then(this._handleStatus)
   }
 
+  deleteCard(id) {
+    return fetch(`${this._url}/movies/${id}`, {
+      method: 'DELETE',
+      headers: this._headers
+    }).then(this._handleStatus)
+  }
+
+  saveCard(card) {
+    return fetch(`${this._url}/movies`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify(card)
+    }).then(this._handleStatus)
+  }
+
+  getMoviesCard() {
+    return fetch(`${this._url}/movies`, {
+      headers: this._headers
+    }).then(this._handleStatus);
+  }
+
 }
 
 export const ApiMain = new MainApi({
