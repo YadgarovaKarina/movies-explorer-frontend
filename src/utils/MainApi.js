@@ -75,7 +75,7 @@ export class MainApi {
 }
 
 export const ApiMain = new MainApi({
-  url: 'http://localhost:3002',
+  url: 'https://api.movies.yadgarova.k.nomoredomains.club',
   headers: {
     Authorization: '',
     'Content-Type': 'application/json'
