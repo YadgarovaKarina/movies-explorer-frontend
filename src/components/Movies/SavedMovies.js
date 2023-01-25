@@ -9,8 +9,11 @@ function SaverMovies() {
   const [cards, setCards] = React.useState([]);
   const [filteredCards, setFilteredCards] = React.useState([]);
   const [updateSearch, setUpdateSearch] = React.useState(false);
+  const [isShowPreloader, setIsShowPreloader] = React.useState(false);
+  const [searchFormWasInit, setSearchFormWasInit] = React.useState(false);
 
   const filterCards = (search) => {
+    setSearchFormWasInit(true);
     setFilteredCards(cards.filter((card) => {
       const isName = card.nameRU.toLowerCase().includes(search.name.toLowerCase());
       const isShorts = search.isShorts ? card.duration <= 40 : true;
@@ -23,11 +26,13 @@ function SaverMovies() {
     ApiMain.setToken(jwt);
     const savedMovies = JSON.parse(localStorage.getItem('saved-movies') || '[]');
     if (savedMovies.length === 0) {
+      setIsShowPreloader(true);
       ApiMain.getMoviesCard()
         .then((serverCards) => {
           localStorage.setItem('saved-movies', JSON.stringify(serverCards.data));
           setCards(serverCards.data)
-          setFilteredCards(serverCards.data)
+          setFilteredCards(serverCards.data);
+          setIsShowPreloader(false);
         });
     } else {
       setCards(savedMovies)
@@ -58,10 +63,14 @@ function SaverMovies() {
   return (
     <main className='movies'>
       <SearchForm filterCards={filterCards} required={false} page='saved-movies' updateSearch={updateSearch} />
-      <div className='movies__preloader-container'>
-        <Preloader />
-      </div>
-      <MoviesCardList cards={filteredCards} handleSaveCard={handleSaveCard} />
+      {isShowPreloader &&
+        <div className='movies__preloader-container'>
+          <Preloader />
+        </div>}
+      <MoviesCardList
+        cards={filteredCards}
+        searchFormWasInit={searchFormWasInit}
+        handleSaveCard={handleSaveCard} />
     </main>
   );
 }

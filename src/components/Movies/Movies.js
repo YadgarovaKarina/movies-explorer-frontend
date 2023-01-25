@@ -6,12 +6,37 @@ import { ApiMovies } from '../../utils/MoviesApi';
 import { ApiMain } from '../../utils/MainApi';
 import React from 'react';
 
+const calcCardCounter = () => {
+  const counters = {
+    start: 12,
+    load: 3
+  }
+  if (window.innerWidth < 1196) {
+    counters.start = 8;
+    counters.load = 2;
+  }
+  if (window.innerWidth < 767) {
+    counters.start = 5;
+    counters.load = 1;
+  }
+  return counters;
+}
+
 function Movies() {
+  const counters = calcCardCounter();
+  const [cardsCounter, setCardsCounter] = React.useState(counters.start);
   const [cards, setCards] = React.useState([]);
   const [filteredCards, setFilteredCards] = React.useState([]);
+  const [isShowPreloader, setIsShowPreloader] = React.useState(false);
+  const [searchFormWasInit, setSearchFormWasInit] = React.useState(false);
+
+  const loadCards = () => {
+    const counters = calcCardCounter();
+    setCardsCounter(cardsCounter + counters.load)
+  }
 
   const filterCards = (search) => {
-
+    setSearchFormWasInit(true);
     const filter = (cards) => {
       setFilteredCards(cards.filter((card) => {
         const isName = card.nameRU.toLowerCase().includes(search.name.toLowerCase());
@@ -24,6 +49,7 @@ function Movies() {
       if (localMovies.length === 0) {
         const jwt = localStorage.getItem('jwt');
         ApiMain.setToken(jwt);
+        setIsShowPreloader(true);
         Promise.all([ApiMovies.getMoviesCard(), ApiMain.getMoviesCard()])
           .then(([beatCards, { data: myCards }]) => {
             const preparedCards = beatCards.map(card => {
@@ -37,6 +63,7 @@ function Movies() {
             setCards(preparedCards);
             filter(preparedCards);
             localStorage.setItem('local-movies', JSON.stringify(preparedCards));
+            setIsShowPreloader(false);
           });
       } else {
         setCards(localMovies);
@@ -100,10 +127,16 @@ function Movies() {
   return (
     <main className='movies'>
       <SearchForm filterCards={filterCards} page='movies' />
-      <div className='movies__preloader-container'>
-        <Preloader />
-      </div>
-      <MoviesCardList cards={filteredCards} handleSaveCard={handleSaveCard} />
+      {isShowPreloader &&
+        <div className='movies__preloader-container'>
+          <Preloader />
+        </div>}
+      <MoviesCardList
+        cards={filteredCards.filter((_, i) => i < cardsCounter)}
+        handleSaveCard={handleSaveCard}
+        searchFormWasInit={searchFormWasInit}
+        loadMore = {filteredCards.length >= cardsCounter}
+        loadCards={loadCards} />
     </main>
   );
 }

@@ -106,7 +106,7 @@
     transition: 1s;
 }
 
-.my-account__edit-btn:hover {
+.my-account__edit-btn:not(:disabled):hover {
     opacity: 0.5;
     transition: 1s;
 }

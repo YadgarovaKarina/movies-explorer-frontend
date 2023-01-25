@@ -1,5 +1,5 @@
 .movies__preloader-container {
-  display: none;
+  display: block;
 }
 
 @media screen and (max-width: 1196px) {

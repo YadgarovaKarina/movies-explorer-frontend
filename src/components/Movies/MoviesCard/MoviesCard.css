@@ -1,6 +1,6 @@
 .movie {
     position: relative;
-    width: 100%;
+    width: 360px;
     display: flex;
     gap: 14px 0;
     flex-direction: column;
@@ -20,6 +20,9 @@
     letter-spacing: 0px;
     text-align: left;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .movie__time {
@@ -33,6 +36,7 @@
     margin: 0;
     padding: 4px;
     border-radius: 3px;
+    white-space: nowrap;
 }
 
 .movie__info {
@@ -115,6 +119,10 @@
 
     .movie__preview {
         height: 168px;
+        width: 300px;
+    }
+
+    .movie {
         width: 300px;
     }
 }
