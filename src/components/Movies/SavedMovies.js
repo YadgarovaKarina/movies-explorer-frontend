@@ -12,15 +12,6 @@ function SaverMovies() {
   const [isShowPreloader, setIsShowPreloader] = React.useState(false);
   const [searchFormWasInit, setSearchFormWasInit] = React.useState(false);
 
-  const filterCards = (search) => {
-    setSearchFormWasInit(true);
-    setFilteredCards(cards.filter((card) => {
-      const isName = card.nameRU.toLowerCase().includes(search.name.toLowerCase());
-      const isShorts = search.isShorts ? card.duration <= 40 : true;
-      return isName && isShorts;
-    }))
-  }
-
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     ApiMain.setToken(jwt);
@@ -40,6 +31,15 @@ function SaverMovies() {
       setUpdateSearch(true);
     }
   }, []);
+
+  const filterCards = (search) => {
+    setSearchFormWasInit(true);
+    setFilteredCards(cards.filter((card) => {
+      const isName = card.nameRU.toLowerCase().includes(search.name.toLowerCase());
+      const isShorts = search.isShorts ? card.duration <= 40 : true;
+      return isName && isShorts;
+    }))
+  }
 
   const handleSaveCard = (card) => {
     ApiMain.deleteCard(card._id)
