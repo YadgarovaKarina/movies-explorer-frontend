@@ -7,4 +7,4 @@ https://www.figma.com/file/AQUhxBRoC0sTA9a7lVNPpI/Diploma-(Copy)?node-id=891%3A3
 https://github.com/YadgarovaKarina/movies-explorer-frontend/pull/2
 
 # Frontend
-//frontend.movies.yadgarova.nomoredomains.rocks
+https://frontend.movies.yadgarova.nomoredomains.rocks/
