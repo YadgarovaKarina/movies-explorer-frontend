@@ -1,6 +1,7 @@
 import React from 'react';
 import './Profile.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import Joi from 'joi';
 
 function Profile({ onUpdateUser, onLogout }) {
     const currentUser = React.useContext(CurrentUserContext);
@@ -26,6 +27,10 @@ function Profile({ onUpdateUser, onLogout }) {
         );
     }, [currentUser.name, currentUser.email]);
 
+    React.useEffect(() => {
+        setIsDisabledButton(value.name === currentUser.name && value.email === currentUser.email);
+    }, [value.name, value.email, currentUser.name, currentUser.email]);
+
     const handleChange = (e) => {
         const { name, value: inputValue, validationMessage } = e.target;
         setValue((state) => ({
@@ -36,6 +41,22 @@ function Profile({ onUpdateUser, onLogout }) {
         setError((state) => ({
             ...state,
             [name]: validationMessage,
+        })
+        );
+        setIsDisabledButton(!formRef.current.checkValidity());
+    };
+
+    const handleChangeEmail = (e) => {
+        const { name, value: inputValue } = e.target;
+        const { error } = Joi.string().email({tlds: {allow: false}}).validate(inputValue);
+        setValue((state) => ({
+            ...state,
+            [name]: inputValue,
+        })
+        );
+        setError((state) => ({
+            ...state,
+            [name]: error ? error.message : '',
         })
         );
         setIsDisabledButton(!formRef.current.checkValidity());
@@ -59,8 +80,8 @@ function Profile({ onUpdateUser, onLogout }) {
                         name="name" value={value.name} onChange={handleChange} placeholder="Имя" required />
                         <span className="main-register__input-error">{error.name}</span>
                     </label>
-                    <label className='main-register__label'>E-mail<input type="email" className="main-register__input"
-                        name="email" value={value.email} onChange={handleChange} placeholder="Email" required />
+                    <label className='main-register__label'>E-mail<input type="text" className="main-register__input"
+                        name="email" value={value.email} onChange={handleChangeEmail} placeholder="Email" required />
                         <span className="main-register__input-error">{error.email}</span>
                     </label>
                 </div>

@@ -2,7 +2,7 @@ import './SearchForm.css';
 import Search from '../../../images/find-3.svg';
 import React from 'react';
 
-function SearchForm({ filterCards, required = true, page, updateSearch }) {
+function SearchForm({ filterCards, required = true, page }) {
     const [isDisabledButton, setIsDisabledButton] = React.useState(true);
     const [error, setError] = React.useState({
         name: '',
@@ -16,16 +16,17 @@ function SearchForm({ filterCards, required = true, page, updateSearch }) {
     const formRef = React.useRef(null);
 
     React.useEffect(() => {
-        const searchMovies = JSON.parse(localStorage.getItem(`search-${page}`));
+        const searchMovies = JSON.parse(localStorage.getItem('search-movies'));
         if (searchMovies) {
             setValue(searchMovies);
             filterCards(searchMovies);
-        } 
-        if (!searchMovies && page === 'saved-movies') {
-            filterCards(value);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [updateSearch]);
+        if (page === 'saved-movies') {
+            filterCards(value);
+            setValue({ name: '', isShorts: false })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleChange = (e) => {
         const {
@@ -37,7 +38,9 @@ function SearchForm({ filterCards, required = true, page, updateSearch }) {
             ...value,
             [name]: inputValue
         }
-        localStorage.setItem(`search-${page}`, JSON.stringify(updatedValue));
+        if (page === 'movies') {
+            localStorage.setItem('search-movies', JSON.stringify(updatedValue));
+        }
         setValue(updatedValue);
         setError((state) => ({
             ...state,
@@ -56,7 +59,7 @@ function SearchForm({ filterCards, required = true, page, updateSearch }) {
             ...value,
             [name]: checked
         }
-        localStorage.setItem(`search-${page}`, JSON.stringify(updatedValue));
+        localStorage.setItem('search-movies', JSON.stringify(updatedValue));
         setValue(updatedValue);
         filterCards(updatedValue);
     };

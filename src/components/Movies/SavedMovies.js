@@ -5,12 +5,10 @@ import Preloader from './Preloader/Preloader';
 import { ApiMain } from '../../utils/MainApi';
 import React from 'react';
 
-function SaverMovies() {
+function SavedMovies() {
   const [cards, setCards] = React.useState([]);
   const [filteredCards, setFilteredCards] = React.useState([]);
-  const [updateSearch, setUpdateSearch] = React.useState(false);
   const [isShowPreloader, setIsShowPreloader] = React.useState(false);
-  const [searchFormWasInit, setSearchFormWasInit] = React.useState(false);
 
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -28,12 +26,10 @@ function SaverMovies() {
     } else {
       setCards(savedMovies)
       setFilteredCards(savedMovies)
-      setUpdateSearch(true);
     }
   }, []);
 
   const filterCards = (search) => {
-    setSearchFormWasInit(true);
     setFilteredCards(cards.filter((card) => {
       const isName = card.nameRU.toLowerCase().includes(search.name.toLowerCase());
       const isShorts = search.isShorts ? card.duration <= 40 : true;
@@ -62,17 +58,16 @@ function SaverMovies() {
 
   return (
     <main className='movies'>
-      <SearchForm filterCards={filterCards} required={false} page='saved-movies' updateSearch={updateSearch} />
+      <SearchForm filterCards={filterCards} required={false} page='saved-movies' />
       {isShowPreloader &&
         <div className='movies__preloader-container'>
           <Preloader />
         </div>}
       <MoviesCardList
         cards={filteredCards}
-        searchFormWasInit={searchFormWasInit}
         handleSaveCard={handleSaveCard} />
     </main>
   );
 }
 
-export default SaverMovies;
+export default SavedMovies;

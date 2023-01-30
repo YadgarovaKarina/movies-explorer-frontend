@@ -44,6 +44,7 @@ export class MainApi {
   }
 
   editUserInfo(name, email) {
+    console.log('Попали')
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
@@ -75,7 +76,8 @@ export class MainApi {
 }
 
 export const ApiMain = new MainApi({
-  url: 'https://api.movies.yadgarova.k.nomoredomains.club',
+  // url: 'https://api.movies.yadgarova.k.nomoredomains.club',
+  url: 'http://localhost:3002',
   headers: {
     Authorization: '',
     'Content-Type': 'application/json'

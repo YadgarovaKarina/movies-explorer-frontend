@@ -52,6 +52,8 @@ function App() {
             setLoggedIn(true);
             setCurrentUser(user);
           } else {
+            setLoggedIn(false);
+            history.push('/');
             handleLogout();
           }
         })
@@ -60,7 +62,7 @@ function App() {
           console.log(err)
         });
     } else {
-      handleLogout();
+      setLoggedIn(false);
     }
   };
 
@@ -133,15 +135,21 @@ function App() {
           onLogout={handleLogout}
         />
 
-        <Route path="/signin">
-          <Login onLogin={handleLogin} />
+        <Route path="/signin" >
+          <ProtectedRoute
+            component={Login}
+            onLogin={handleLogin}
+            loggedIn={!loggedIn} />
         </Route>
 
         <Route path="/signup">
-          <Register onRegister={handleRegister} />
+          <ProtectedRoute
+            component={Register}
+            onRegister={handleRegister}
+            loggedIn={!loggedIn} />
         </Route>
 
-        <Route path="*">
+        <Route path="*" >
           <NotFound />
         </Route>
 

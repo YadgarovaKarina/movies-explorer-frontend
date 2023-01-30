@@ -1,6 +1,7 @@
 import React from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
+import Joi from 'joi';
 
 function Login({ onLogin }) {
     const [value, setValue] = React.useState({
@@ -32,6 +33,22 @@ function Login({ onLogin }) {
         setIsDisabledButton(!formRef.current.checkValidity());
     };
 
+    const handleChangeEmail = (e) => {
+        const { name, value: inputValue } = e.target;
+        const { error } = Joi.string().email({tlds: {allow: false}}).validate(inputValue);
+        setValue((state) => ({
+            ...state,
+            [name]: inputValue,
+        })
+        );
+        setError((state) => ({
+            ...state,
+            [name]: error ? error.message : '',
+        })
+        );
+        setIsDisabledButton(!formRef.current.checkValidity());
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { email, password } = value;
@@ -45,7 +62,7 @@ function Login({ onLogin }) {
                 <div className='main-register__container'>
                     <h6 className="main-register__title">Рады видеть!</h6>
                     <label className='main-register__label'>E-mail<input type="email" className="main-register__input"
-                        name="email" value={value.email} onChange={handleChange} placeholder="Email" required />
+                        name="email" value={value.email} onChange={handleChangeEmail} placeholder="Email" required />
                         <span className="main-register__input-error">{error.email}</span>
                     </label>
                     <label className='main-register__label'>Пароль<input type="password" className="main-register__input"
