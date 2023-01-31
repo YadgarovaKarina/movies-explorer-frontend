@@ -96,6 +96,7 @@ function App() {
     return ApiMain.editUserInfo(name, email)
       .then((onUpdateUser) => {
         setCurrentUser(onUpdateUser);
+        return '';
       })
       .catch((err) => err.message);
   }

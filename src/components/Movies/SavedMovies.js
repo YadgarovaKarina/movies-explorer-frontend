@@ -9,6 +9,7 @@ function SavedMovies() {
   const [cards, setCards] = React.useState([]);
   const [filteredCards, setFilteredCards] = React.useState([]);
   const [isShowPreloader, setIsShowPreloader] = React.useState(false);
+  const [searchFormWasInit, setSearchFormWasInit] = React.useState(false);
 
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -30,6 +31,7 @@ function SavedMovies() {
   }, []);
 
   const filterCards = (search) => {
+    setSearchFormWasInit(true);
     setFilteredCards(cards.filter((card) => {
       const isName = card.nameRU.toLowerCase().includes(search.name.toLowerCase());
       const isShorts = search.isShorts ? card.duration <= 40 : true;
@@ -65,7 +67,8 @@ function SavedMovies() {
         </div>}
       <MoviesCardList
         cards={filteredCards}
-        handleSaveCard={handleSaveCard} />
+        handleSaveCard={handleSaveCard}
+        searchFormWasInit={searchFormWasInit} />
     </main>
   );
 }

@@ -135,7 +135,7 @@ function Movies() {
         cards={filteredCards.filter((_, i) => i < cardsCounter)}
         handleSaveCard={handleSaveCard}
         searchFormWasInit={searchFormWasInit}
-        loadMore = {filteredCards.length >= cardsCounter}
+        loadMore = {filteredCards.length > cardsCounter}
         loadCards={loadCards} />
     </main>
   );

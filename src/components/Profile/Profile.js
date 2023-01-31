@@ -6,7 +6,8 @@ import Joi from 'joi';
 function Profile({ onUpdateUser, onLogout }) {
     const currentUser = React.useContext(CurrentUserContext);
     const [isDisabledButton, setIsDisabledButton] = React.useState(true);
-    const [apiError, setApiError] = React.useState('');
+    const [apiError, setApiError] = React.useState(null);
+    const wasSubmit = apiError != null;
     const [error, setError] = React.useState({
         name: '',
         email: '',
@@ -86,7 +87,7 @@ function Profile({ onUpdateUser, onLogout }) {
                     </label>
                 </div>
                 <div className='my-account__container-btn'>
-                    <span className="main-register__input-error">{apiError}</span>
+                    <span className={apiError ? 'main-register__input-error' : 'main-register__input-success'}>{wasSubmit ? apiError || 'Данные успешно обновлены' : ''}</span>
                     <button type='submit' className='my-account__edit-btn' disabled={isDisabledButton}>Редактировать</button>
                     <button type='button' className='my-account__exit-btn' onClick={onLogout}>Выйти из аккаунта</button>
                 </div>

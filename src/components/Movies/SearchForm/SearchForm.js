@@ -22,7 +22,7 @@ function SearchForm({ filterCards, required = true, page }) {
             filterCards(searchMovies);
         }
         if (page === 'saved-movies') {
-            filterCards(value);
+            filterCards({ name: '', isShorts: false });
             setValue({ name: '', isShorts: false })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -59,7 +59,9 @@ function SearchForm({ filterCards, required = true, page }) {
             ...value,
             [name]: checked
         }
-        localStorage.setItem('search-movies', JSON.stringify(updatedValue));
+        if (page === 'movies') {
+            localStorage.setItem('search-movies', JSON.stringify(updatedValue));
+        }
         setValue(updatedValue);
         filterCards(updatedValue);
     };

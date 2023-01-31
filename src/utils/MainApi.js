@@ -44,7 +44,6 @@ export class MainApi {
   }
 
   editUserInfo(name, email) {
-    console.log('Попали')
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
