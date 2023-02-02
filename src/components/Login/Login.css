@@ -39,6 +39,12 @@
     width: 100%;
 }
 
+.main-register__button:disabled {
+    background-color: #F8F8F8;
+    color: gray;
+    cursor: default;
+}
+
 .main-register__signin {
     display: flex;
     justify-content: center;
@@ -110,6 +116,8 @@
 
 .main-register__container-btn {
     display: flex;
+    flex-direction: column;
+    gap: 10px;
     width: 100%;
 }
 

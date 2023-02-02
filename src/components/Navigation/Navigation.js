@@ -21,7 +21,7 @@ function Navigation({ loggedIn }) {
                     </div>
                 </div>
             }
-            {(!isLoginPage || (!loggedIn && !isLoginPage)) &&
+            {(!loggedIn && !isLoginPage) &&
                 <div className='navigation__links'>
                     <Link to='/signup' className='navigation__register-btn'>Регистрация</Link>
                     <Link to='/signin' className='navigation__login-btn'>Войти</Link>

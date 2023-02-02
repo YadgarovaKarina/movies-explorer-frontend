@@ -8,6 +8,10 @@
     padding: 74px 0 123px;
 }
 
+.main-register__container {
+    align-items: center;
+}
+
 .main-register__input {
     font-size: 13px;
     font-weight: 400;
@@ -45,6 +49,14 @@
     color: red;
 }
 
+.main-register__input-success {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    color: green;
+}
+
 .my-account__container-btn {
     display: flex;
     flex-direction: column;
@@ -60,7 +72,10 @@
 }
 
 .my-account__form {
+    display: flex;
+    flex-direction: column;
     width: 410px;
+    gap: 210px;
 }
 
 .my-account__title {
@@ -76,6 +91,11 @@
     background-color: transparent;
     color: white;
     cursor: pointer;
+}
+
+.my-account__edit-btn:disabled {
+    cursor: default;
+    color: gray;
 }
 
 .my-account__exit-btn {
@@ -94,7 +114,7 @@
     transition: 1s;
 }
 
-.my-account__edit-btn:hover {
+.my-account__edit-btn:not(:disabled):hover {
     opacity: 0.5;
     transition: 1s;
 }
